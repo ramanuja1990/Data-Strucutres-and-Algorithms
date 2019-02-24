@@ -1,9 +1,9 @@
 # Climbing Stairs
-## You are climbing a stair case. It takes n steps to reach to the top.Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+### You are climbing a stair case. It takes n steps to reach to the top.Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 
-## Solution: Dynamic Programming - Recursion <br/>
-## We can get to nth step by <br/>
-## (n-1) steps + 1 step  OR (n-2) + 2 steps <br/>
+### Solution: Dynamic Programming - Recursion <br/>
+### We can get to nth step by <br/>
+### (n-1) steps + 1 step  OR (n-2) + 2 steps <br/>
 
 ## <strong>Time Complexity: </strong> O(2<sup>n</sup>)
 
