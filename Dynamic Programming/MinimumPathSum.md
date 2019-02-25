@@ -16,10 +16,8 @@ Explanation: Because the path 1→3→1→1→1 minimizes the sum.
 ## Explanation
 ### The only way to move to spot (r,c) is by moving to one of the adjacent spots: (r-1, c) or (r, c-1). So, we need to find a path to either (r-1, c) or (r, c-1)
 
-```
-<strong> Time Complexity: O(2<sup>(r+c)</sup>) </strong>
-```
-<br/>
+
+### <strong> Time Complexity: O(2<sup>(r+c)</sup>) </strong> <br/>
 
 ```
 import java.util.*;
