@@ -14,8 +14,8 @@ Output: 7
 Explanation: Because the path 1→3→1→1→1 minimizes the sum.
 ```
 ## Explanation
-### The only way to move to spot (r,c) is by moving to one of the adjacent spots: (r-1, c) or (r, c-1). So, we need to find a path to either (r-1, c) or (r, c-1)
-
+### The only way to move to spot (r,c) is by moving to one of the adjacent spots: (r-1, c) or (r, c-1). So, we need to find a path to either (r-1, c) or (r, c-1) <br/>
+### dp(row, col) = val[row][col]  + Math.min(dp(row-1, col), dp(row, col-1));
 
 ### <strong> Time Complexity: O(2<sup>(r+c)</sup>) </strong> <br/>
 
@@ -36,25 +36,15 @@ class MinimumPathSum {
     public int findMinPath(int row, int col, int[][] uniquePathSum, int[][] grid){
        
         if(row < 0 || col < 0)
-            return -1;
+            return Integer.MAX_VALUE;
         if(row == 0 && col == 0){
             return grid[row][col];
         }
         if(uniquePathSum[row][col] != Integer.MAX_VALUE){
             return uniquePathSum[row][col];
         }
-        
-        int rowSum = findMinPath(row, col-1, uniquePathSum, grid);
-        //Only the minimum Path values should be stored in cells, if the path exists.
-        if(rowSum != -1) {
-            
-        	uniquePathSum[row][col] = Math.min((rowSum + grid[row][col]), uniquePathSum[row][col]);
-        }
-        int colSum =  findMinPath(row-1, col, uniquePathSum, grid);
-         //Only the minimum Path values should be stored in cells, if the path exists.
-        if(colSum != -1) {
-           
-        	uniquePathSum[row][col] = Math.min((colSum + grid[row][col]), uniquePathSum[row][col]);
+        else{
+            uniquePathSum[row][col] = grid[row][col] + Math.min(findMinPath(row, col-1, uniquePathSum, grid), findMinPath(row-1, col, uniquePathSum, grid));
         }
         return uniquePathSum[row][col];
     }

@@ -14,21 +14,15 @@ class MinimumPathSum {
     public int findMinPath(int row, int col, int[][] uniquePathSum, int[][] grid){
        
         if(row < 0 || col < 0)
-            return -1;
+            return Integer.MAX_VALUE;
         if(row == 0 && col == 0){
             return grid[row][col];
         }
         if(uniquePathSum[row][col] != Integer.MAX_VALUE){
             return uniquePathSum[row][col];
         }
-        
-        int rowSum = findMinPath(row, col-1, uniquePathSum, grid);
-        if(rowSum != -1) {
-        	uniquePathSum[row][col] = Math.min((rowSum + grid[row][col]), uniquePathSum[row][col]);
-        }
-        int colSum =  findMinPath(row-1, col, uniquePathSum, grid);
-        if(colSum != -1) {
-        	uniquePathSum[row][col] = Math.min((colSum + grid[row][col]), uniquePathSum[row][col]);
+        else{
+            uniquePathSum[row][col] = grid[row][col] + Math.min(findMinPath(row, col-1, uniquePathSum, grid), findMinPath(row-1, col, uniquePathSum, grid));
         }
         return uniquePathSum[row][col];
     }
